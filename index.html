@@ -26,6 +26,7 @@
         color: #f8fafc;
         font-family: system-ui, -apple-system, sans-serif;
         margin: 0;
+        overflow-x: hidden;
       }
       /* Custom scrollbar */
       textarea::-webkit-scrollbar {
@@ -41,28 +42,32 @@
       textarea::-webkit-scrollbar-thumb:hover {
         background: #64748b; 
       }
+      #root {
+        min-height: 100vh;
+      }
     </style>
     <!-- D3 and D3-Cloud -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
     "d3": "https://esm.sh/d3@^7.9.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
     "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "recharts": "https://esm.sh/recharts@^3.6.0"
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- 关键修复：添加入口文件引用 -->
+    <!-- 入口文件引用 -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
