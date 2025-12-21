@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { WordData, AnalysisResult } from "../types";
 
@@ -27,7 +28,8 @@ export const analyzeTextWithGemini = async (text: string): Promise<AnalysisResul
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      // Fix: Use 'gemini-3-flash-preview' for basic text tasks as per guidelines
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -64,6 +66,7 @@ export const analyzeTextWithGemini = async (text: string): Promise<AnalysisResul
       }
     });
 
+    // Fix: Access .text property directly (not a method) as per SDK guidelines
     const result = JSON.parse(response.text || "{}");
 
     // Map colors to common labels

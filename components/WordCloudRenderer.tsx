@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { WordData, CloudConfig } from '../types';
@@ -101,9 +102,9 @@ const WordCloudRenderer: React.FC<WordCloudRendererProps> = ({ data, config, wid
   }, [data, config, width, height]);
 
   return (
-    <div className="relative flex items-center justify-center bg-surface rounded-xl border border-slate-700 shadow-xl overflow-hidden">
+    <div className="relative flex items-center justify-center bg-white rounded-xl border border-slate-200 shadow-md overflow-hidden min-h-[500px]">
       {isGenerating && (
-        <div className="absolute inset-0 flex items-center justify-center bg-surface/80 z-10">
+        <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-10">
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
             <span className="text-primary font-medium">排版计算中...</span>

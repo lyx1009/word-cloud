@@ -1,25 +1,32 @@
+
 {
-  "name": "云图-·-chinese-word-cloud",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "chinese-word-cloud",
+  "version": "1.0.0",
+  "description": "Professional Chinese Word Cloud Generator",
+  "main": "electron-main.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "ios:setup": "npm install @capacitor/core @capacitor/cli @capacitor/ios && npx cap init",
+    "ios:add": "npx cap add ios",
+    "ios:sync": "npx cap sync ios",
+    "ios:open": "npx cap open ios"
+  },
+  "author": "CloudyEngineer",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "@capacitor/cli": "^5.0.0"
   },
   "dependencies": {
-    "@google/genai": "^1.34.0",
-    "d3": "^7.9.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "lucide-react": "^0.561.0",
-    "recharts": "^3.6.0"
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/ios": "^5.0.0"
   },
-  "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+  "build": {
+    "appId": "com.wordcloud.app",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    }
   }
 }

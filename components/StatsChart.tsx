@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   BarChart,
@@ -26,9 +27,9 @@ const StatsChart: React.FC<StatsChartProps> = ({ data }) => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-800 border border-slate-600 p-2 rounded shadow text-slate-100">
+        <div className="bg-white border border-slate-200 p-2 rounded shadow-lg text-slate-800">
           <p className="font-bold">{label}</p>
-          <p className="text-primary">{`Frequency: ${payload[0].value}`}</p>
+          <p className="text-primary">{`频次: ${payload[0].value}`}</p>
         </div>
       );
     }
@@ -36,22 +37,22 @@ const StatsChart: React.FC<StatsChartProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-full h-[500px] bg-surface rounded-xl border border-slate-700 p-4 shadow-xl">
-      <h3 className="text-lg font-semibold text-slate-200 mb-4 px-2">Top 20 Keywords</h3>
+    <div className="w-full h-[500px] bg-white rounded-xl border border-slate-200 p-4 shadow-md">
+      <h3 className="text-lg font-semibold text-slate-700 mb-4 px-2">前 20 位高频词汇</h3>
       <ResponsiveContainer width="100%" height="90%">
         <BarChart
           data={chartData}
           layout="vertical"
           margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={false} />
-          <XAxis type="number" stroke="#94a3b8" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" horizontal={false} />
+          <XAxis type="number" stroke="#94a3b8" fontSize={10} />
           <YAxis 
             dataKey="name" 
             type="category" 
             width={80} 
             stroke="#94a3b8" 
-            tick={{ fontSize: 12 }} 
+            tick={{ fontSize: 12, fill: '#64748b' }} 
           />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="count" radius={[0, 4, 4, 0]}>

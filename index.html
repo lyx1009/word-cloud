@@ -3,8 +3,17 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <title>云图 · Chinese Word Cloud</title>
+    
+    <!-- iOS 专用配置 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="云图">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3222/3222800.png">
+    
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#6366f1">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -13,8 +22,8 @@
             colors: {
               primary: '#6366f1',
               secondary: '#a855f7',
-              dark: '#0f172a',
-              surface: '#1e293b',
+              dark: '#f8fafc',
+              surface: '#ffffff',
             }
           }
         }
@@ -22,31 +31,26 @@
     </script>
     <style>
       body {
-        background-color: #0f172a;
-        color: #f8fafc;
+        background-color: #ffffff;
+        color: #1e293b;
         font-family: system-ui, -apple-system, sans-serif;
         margin: 0;
         overflow-x: hidden;
+        /* 防止 iOS 橡皮筋滚动导致背景发白 */
+        overscroll-behavior-y: none;
+        /* 适配 iOS 底部安全区域 */
+        padding-bottom: env(safe-area-inset-bottom);
       }
-      /* Custom scrollbar */
-      textarea::-webkit-scrollbar {
-        width: 8px;
-      }
-      textarea::-webkit-scrollbar-track {
-        background: #1e293b; 
-      }
-      textarea::-webkit-scrollbar-thumb {
-        background: #475569; 
-        border-radius: 4px;
-      }
-      textarea::-webkit-scrollbar-thumb:hover {
-        background: #64748b; 
-      }
-      #root {
-        min-height: 100vh;
+      textarea::-webkit-scrollbar { width: 8px; }
+      textarea::-webkit-scrollbar-track { background: #f1f5f9; }
+      textarea::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      #root { min-height: 100vh; }
+      
+      /* iOS 触摸优化 */
+      button, a {
+        -webkit-tap-highlight-color: transparent;
       }
     </style>
-    <!-- D3 and D3-Cloud -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
     <script type="importmap">
@@ -67,7 +71,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- 入口文件引用 -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>

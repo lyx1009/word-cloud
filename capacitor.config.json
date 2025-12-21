@@ -1,0 +1,10 @@
+
+{
+  "appId": "com.wordcloud.chinese",
+  "appName": "云图",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
